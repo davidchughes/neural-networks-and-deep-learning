@@ -16,8 +16,8 @@ import time
 
 
 alpha_group = 3
-bg = 5
-prefix = "small"
+bg = 3
+prefix = "Tiny" #small #medium/default #large
 import hard_alphabet
 import show_data
 

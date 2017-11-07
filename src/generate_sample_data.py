@@ -4,6 +4,9 @@ import draw_digits
 
 def generate_all_data(prefix, bg_difficulty, alpha_group = 0):
     sample_size = 3000 #medium = approximate geometric mean between 1000 and 10000
+    prefix = prefix.lower() #files in python aren't case sensitive anyway - This could cause confusion down the line if other people start playing with this
+    if "tiny" in prefix:
+        sample_size = 100
     if "small" in prefix:
         sample_size = 1000
     if "large" in prefix:
