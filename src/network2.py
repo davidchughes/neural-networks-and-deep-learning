@@ -20,6 +20,15 @@ import sys
 # Third-party libraries
 import numpy as np
 
+np.random.seed(1)
+random.seed(1)
+
+#my libs
+import show_data
+import hard_alphabet
+
+
+
 
 #### Define the quadratic and cross-entropy cost functions
 
@@ -172,8 +181,8 @@ class Network(object):
             if monitor_training_accuracy:
                 accuracy = self.accuracy(training_data, convert=True)
                 training_accuracy.append(accuracy)
-                print "Accuracy on training data: {} / {}".format(
-                    accuracy, n)
+                print "Accuracy on training data: {} / {}     {}%".format(
+                    accuracy, n, accuracy/float(n))
             if monitor_evaluation_cost:
                 cost = self.total_cost(evaluation_data, lmbda, convert=True)
                 evaluation_cost.append(cost)
@@ -181,11 +190,14 @@ class Network(object):
             if monitor_evaluation_accuracy:
                 accuracy = self.accuracy(evaluation_data)
                 evaluation_accuracy.append(accuracy)
-                print "Accuracy on evaluation data: {} / {}".format(
-                    self.accuracy(evaluation_data), n_data)
+                print "Accuracy on evaluation data: {} / {}     {}%".format(
+                    self.accuracy(evaluation_data), n_data, self.accuracy(evaluation_data)/float(n_data))
+                #self.show_wrong_results(evaluation_data)
+                accuracy_record = open('accuracy.txt', 'a')
+                accuracy_record.write(str(self.accuracy(evaluation_data)/float(n_data)) + "\n")
+                accuracy_record.close()
             print
-        return evaluation_cost, evaluation_accuracy, \
-            training_cost, training_accuracy
+        return evaluation_cost, evaluation_accuracy, training_cost, training_accuracy
 
     def update_mini_batch(self, mini_batch, eta, lmbda, n):
         """Update the network's weights and biases by applying gradient
@@ -296,6 +308,19 @@ class Network(object):
         f = open(filename, "w")
         json.dump(data, f)
         f.close()
+
+    def show_wrong_results(self, data):
+        results = [(np.argmax(self.feedforward(x)), y)
+                        for (x, y) in data]
+        i = 0
+        count = 0
+        for (x, y) in results:
+            if (x != y):
+                show_data.show_image(show_data.shape_to_2d_image(data,i), hard_alphabet.num_to_chars(x,3) + " != " + hard_alphabet.num_to_chars(y,3) )
+                count += 1
+                if count > 2:
+                    break
+            i += 1
 
 #### Loading a Network
 def load(filename):
