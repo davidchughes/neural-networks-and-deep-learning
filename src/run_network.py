@@ -26,9 +26,9 @@ for x in xrange(0,0):
     generated_data[en_num].append(sets[en_num])
     show_data.show_image(show_data.shape_to_2d_image(generated_data[en_num],x), "_e" + str(en_num) + ": " + str(show_data.get_sample_value(generated_data[en_num],x)))
 '''
-#import generate_sample_data
-#sample_set_names = generate_sample_data.generate_all_data("large", 5, 3)
-sample_set_names = ["../hardData/small_bg5_a3_e0.pkl", "../hardData/small_bg5_a3_e1.pkl", "../hardData/small_bg5_a3_e2.pkl",  "../hardData/small_bg5_a3_e3.pkl", "../hardData/small_bg5_a3_e4.pkl"]
+import generate_sample_data
+sample_set_names = generate_sample_data.generate_all_data("small", 5, 3)
+#sample_set_names = ["../data/hardData/small_bg5_a3_e0.pkl", "../data/hardData/small_bg5_a3_e1.pkl", "../data/hardData/small_bg5_a3_e2.pkl",  "../data/hardData/small_bg5_a3_e3.pkl", "../data/hardData/small_bg5_a3_e4.pkl"]
 
 import custom_loader
 import hard_alphabet

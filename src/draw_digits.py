@@ -28,22 +28,22 @@ def draw_text(text, text_value, background = 0):  #text should be 3 chars 'garba
     img=Image.new("RGB", (280,280),bgColor)
   else:
     if background == 1 :
-      img = Image.open("bg1.png")
+      img = Image.open("../data/bg1.png")
       scale_size = 28               # scale_size is the size the max text height should be in pixels in the image
     elif background == 2 :
-      img = Image.open("bg2.png")
+      img = Image.open("../data/bg2.png")
       scale_size = 180
     elif background == 3 :
-      img = Image.open("bg3.png")
+      img = Image.open("../data/bg3.png")
       scale_size = 140
     elif background == 4 :
-      img = Image.open("bg4.png")
+      img = Image.open("../data/bg4.png")
       scale_size = 100
     elif background == 5 :
-      img = Image.open("bg5.png")
+      img = Image.open("../data/bg5.png")
       scale_size = 140
     elif background == 6 :
-      img = Image.open("bg6.png")
+      img = Image.open("../data/bg6.png")
       scale_size = 80
     x = random.randint(0,img.size[0] - scale_size)
     y = random.randint(0,img.size[1] - scale_size)
