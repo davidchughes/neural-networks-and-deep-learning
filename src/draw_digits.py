@@ -1,12 +1,9 @@
-import time  # delete
 import PIL
 from PIL import ImageFont
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageOps
 from PIL import ImageFilter
-#from PIL import ImageEnhance
-#from PIL import ImageMath
 
 import random
 import numpy as np
@@ -71,9 +68,6 @@ def draw_text(text, text_value, background = 0):  #text should be 3 chars 'garba
   img = img.convert('F')
   arr = np.array(img)/255.0
   arr = arr.flatten()             #e0 = no enhancement
-
-  #print arr
-  #img.save(str(text_value)+".png")
 
   img_e1 = ImageOps.invert(img_e1)
   img_e1 = img_e1.convert('F')

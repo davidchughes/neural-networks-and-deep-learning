@@ -15,9 +15,9 @@ import numpy as np
 import time
 
 #this should be a config file
-ALPHA_GROUP = 3
-BG = 4
-PREFIX = "tiny" #small #medium/default #large
+ALPHA_GROUP = 0
+BG = 6
+PREFIX = "small" # 'tiny' < 1min; 'small' ~= 1min; default ~= 3min; 'large' ~= 10min
 SHOW_IMAGES = True # True to show images of the data where it can. False to keep quiet and not pop up any extra windows
 
 PREFIX = PREFIX.lower() # Heavy handedly make everything lowercase

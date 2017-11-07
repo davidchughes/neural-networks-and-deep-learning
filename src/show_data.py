@@ -17,9 +17,6 @@ def show_image(image,value = "?"):
   pyplot.pause(1.0) # Show it for 1 sec
   pyplot.close()  # Close window will leave the window up until a new one opens or the main program exits - weird
 
-
-
-
 def shape_to_2d_image(samples,index):
   return samples[index][0].reshape(28,28)
 

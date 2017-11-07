@@ -318,7 +318,7 @@ class Network(object):
         count = 0
         for (x, y) in results:
             if (x != y):
-                show_data.show_image(show_data.shape_to_2d_image(data,i), hard_alphabet.num_to_chars(x,3) + " != " + hard_alphabet.num_to_chars(y,3))   #TO DO: get config value for ALPHA_GROUP not 3
+                show_data.show_image(show_data.shape_to_2d_image(data,i), hard_alphabet.num_to_chars(x,0) + " != " + hard_alphabet.num_to_chars(y,0))   #TO DO: get config value for ALPHA_GROUP not 3
                 count += 1
                 if count > 2:  #show just a few failed tests
                     break

@@ -1,8 +1,8 @@
 """
-easy_loader
+custom_loader
 ~~~~~~~~~~~~
 
-Loads generated data of just digits 0-9 as black text on a white background.  For details of the data
+Loads generated data of just a set of chars as black text on a white background.  For details of the data
 structures that are returned, see the doc strings for ``load_data``
 and ``load_data_wrapper``.  In practice, ``load_data_wrapper`` is the
 function usually called by our neural network code.
@@ -44,7 +44,7 @@ def load_mnist_data():
     f.close()
     return (training_data, validation_data, test_data)
 
-def load_text_data(path = "../easyData/harder2_data.pkl"):#"../easyData/easy_data.pkl"):
+def load_text_data(path):
     return cPickle.load(open(path, 'rb'))
 
 
