@@ -24,7 +24,7 @@ prefix = prefix.lower() # Heavy handedly make everything lowercase
 import hard_alphabet
 import show_data
 
-
+'''
 # Preview what the generated digits will look like
 import draw_digits
 generated_data = [[],[],[],[],[]]
@@ -35,7 +35,7 @@ for x in xrange(0,10):
     generated_data[en_num].append(sets[en_num])
     show_data.show_image(show_data.shape_to_2d_image(generated_data[en_num],x), "_e" + str(en_num) + ": " + hard_alphabet.num_to_chars(show_data.get_sample_value(generated_data[en_num],x),alpha_group))
 
-
+'''
 if not os.path.exists("../data/hardData"):
     os.makedirs("../data/hardData")
 
@@ -64,7 +64,7 @@ for batch in sample_set_names:
   print "Loading " + batch 
   training_data, validation_data, test_data = custom_loader.load_data_wrapper(custom_loader.load_text_data(batch))
   
-  #show_data.show_image(show_data.shape_to_2d_image(training_data,0), hard_alphabet.num_to_chars(show_data.get_sample_value(training_data,0),3))
+  #show_data.show_image(show_data.shape_to_2d_image(training_data,0), hard_alphabet.num_to_chars(show_data.get_sample_value(training_data,0),alpha_group))
 
   print 'running network for ' + batch
 

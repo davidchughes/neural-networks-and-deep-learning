@@ -18,7 +18,7 @@ def shape_to_2d_image(samples,index):
   return samples[index][0].reshape(28,28)
 
 def get_sample_value(samples,index):
-  if isinstance(samples[index][1], list): # then the value has been vectorized as the final output of the nodes [0,0,0,0,0,0,0,0,0,1] = node 9
+  if not isinstance(samples[index][1], int): # then the value has been vectorized as the final output of the nodes [0,0,0,0,0,0,0,0,0,1] = node 9
     x = 0
     for test in samples[index][1]:
       if test == 1:
