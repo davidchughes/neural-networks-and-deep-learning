@@ -14,10 +14,13 @@ import os
 import numpy as np
 import time
 
-
+#this should be a config file
 alpha_group = 3
 bg = 3
-prefix = "Tiny" #small #medium/default #large
+prefix = "tiny" #small #medium/default #large
+
+prefix = prefix.lower() # Heavy handedly make everything lowercase
+
 import hard_alphabet
 import show_data
 
