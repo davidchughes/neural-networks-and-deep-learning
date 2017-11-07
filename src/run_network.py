@@ -15,31 +15,34 @@ import numpy as np
 import time
 
 #this should be a config file
-alpha_group = 3
-bg = 3
-prefix = "tiny" #small #medium/default #large
+ALPHA_GROUP = 3
+BG = 3
+PREFIX = "tiny" #small #medium/default #large
+SHOW_IMAGES = True # True to show images of the data where it can. False to keep quiet and not pop up any extra windows
 
-prefix = prefix.lower() # Heavy handedly make everything lowercase
+PREFIX = PREFIX.lower() # Heavy handedly make everything lowercase
 
 import hard_alphabet
 import show_data
 
-'''
+
 # Preview what the generated digits will look like
-import draw_digits
-generated_data = [[],[],[],[],[]]
+if SHOW_IMAGES:
+  import draw_digits
+  generated_data = [[],[],[],[],[]]
 
-for x in xrange(0,10):
-  sets = draw_digits.draw_rand_text(bg,alpha_group)
-  for en_num in range(0,len(sets)):
-    generated_data[en_num].append(sets[en_num])
-    show_data.show_image(show_data.shape_to_2d_image(generated_data[en_num],x), "_e" + str(en_num) + ": " + hard_alphabet.num_to_chars(show_data.get_sample_value(generated_data[en_num],x),alpha_group))
+  for x in xrange(0,10):
+    sets = draw_digits.draw_rand_text(BG,ALPHA_GROUP)
+    for en_num in range(0,len(sets)):
+      generated_data[en_num].append(sets[en_num])
+      show_data.show_image(show_data.shape_to_2d_image(generated_data[en_num],x), "_e" + str(en_num) + ": " + hard_alphabet.num_to_chars(show_data.get_sample_value(generated_data[en_num],x),ALPHA_GROUP))
 
-'''
+
+
 if not os.path.exists("../data/hardData"):
     os.makedirs("../data/hardData")
 
-sample_set_names = ["../data/hardData/"+prefix+"_bg"+str(bg)+"_a"+str(alpha_group)+"_e"+str(e)+".pkl" for e in range(0,5)]
+sample_set_names = ["../data/hardData/"+PREFIX+"_bg"+str(BG)+"_a"+str(ALPHA_GROUP)+"_e"+str(e)+".pkl" for e in range(0,5)]
 missing = False
 #check to see if the data set files already exist
 for file in sample_set_names:
@@ -50,7 +53,7 @@ for file in sample_set_names:
 # if the .pkl files aren't all there, then generate more
 if missing:
   import generate_sample_data
-  generated_set_names = generate_sample_data.generate_all_data(prefix, bg, alpha_group)
+  generated_set_names = generate_sample_data.generate_all_data(PREFIX, BG, ALPHA_GROUP)
   # in case someone in the future only wants to run a subset of the enhancements and asks for one that didn't get generated, throw a soft little message on the screen
   if not set(generated_set_names).issuperset(sample_set_names):       #check to make sure all requested files names have been generated
     print "Error! Set names don't match. Expected:" + str(sample_set_names) + " Generated:" + str(generated_set_names)    # an attempt at being civilized
@@ -63,8 +66,8 @@ import custom_loader
 for batch in sample_set_names:
   print "Loading " + batch 
   training_data, validation_data, test_data = custom_loader.load_data_wrapper(custom_loader.load_text_data(batch))
-  
-  #show_data.show_image(show_data.shape_to_2d_image(training_data,0), hard_alphabet.num_to_chars(show_data.get_sample_value(training_data,0),alpha_group))
+  if SHOW_IMAGES: # show the first element
+    show_data.show_image(show_data.shape_to_2d_image(training_data,0), hard_alphabet.num_to_chars(show_data.get_sample_value(training_data,0),ALPHA_GROUP))
 
   print 'running network for ' + batch
 
@@ -81,4 +84,5 @@ for batch in sample_set_names:
   lmbda = 5.0,
   evaluation_data=test_data,
   monitor_evaluation_accuracy=True,
-  monitor_training_accuracy=True)
+  monitor_training_accuracy=True,
+  show_failed_test_data = SHOW_IMAGES)

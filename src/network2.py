@@ -141,7 +141,8 @@ class Network(object):
             monitor_evaluation_cost=False,
             monitor_evaluation_accuracy=False,
             monitor_training_cost=False,
-            monitor_training_accuracy=False):
+            monitor_training_accuracy=False,
+            show_failed_test_data = False):
         """Train the neural network using mini-batch stochastic gradient
         descent.  The ``training_data`` is a list of tuples ``(x, y)``
         representing the training inputs and the desired outputs.  The
@@ -192,7 +193,8 @@ class Network(object):
                 evaluation_accuracy.append(accuracy)
                 print "Accuracy on evaluation data: {} / {}     {}%".format(
                     self.accuracy(evaluation_data), n_data, self.accuracy(evaluation_data)/float(n_data))
-                #self.show_wrong_results(evaluation_data)
+                if show_failed_test_data:
+                    self.show_wrong_results(evaluation_data)
                 accuracy_record = open('accuracy.txt', 'a')
                 accuracy_record.write(str(self.accuracy(evaluation_data)/float(n_data)) + "\n")
                 accuracy_record.close()
@@ -316,9 +318,9 @@ class Network(object):
         count = 0
         for (x, y) in results:
             if (x != y):
-                show_data.show_image(show_data.shape_to_2d_image(data,i), hard_alphabet.num_to_chars(x,3) + " != " + hard_alphabet.num_to_chars(y,3) )
+                show_data.show_image(show_data.shape_to_2d_image(data,i), hard_alphabet.num_to_chars(x,3) + " != " + hard_alphabet.num_to_chars(y,3))   #TO DO: get config value for ALPHA_GROUP not 3
                 count += 1
-                if count > 2:
+                if count > 2:  #show just a few failed tests
                     break
             i += 1
 
