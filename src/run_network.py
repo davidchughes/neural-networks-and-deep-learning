@@ -16,7 +16,7 @@ import time
 
 #this should be a config file
 ALPHA_GROUP = 3
-BG = 3
+BG = 4
 PREFIX = "tiny" #small #medium/default #large
 SHOW_IMAGES = True # True to show images of the data where it can. False to keep quiet and not pop up any extra windows
 
@@ -32,11 +32,10 @@ if SHOW_IMAGES:
   generated_data = [[],[],[],[],[]]
 
   for x in xrange(0,3):
-    sets = draw_digits.draw_rand_text(BG,ALPHA_GROUP)
-    for en_num in range(0,len(sets)):
-      generated_data[en_num].append(sets[en_num])
-      show_data.show_image(show_data.shape_to_2d_image(generated_data[en_num],x), "_e" + str(en_num) + ": " + hard_alphabet.num_to_chars(show_data.get_sample_value(generated_data[en_num],x),ALPHA_GROUP))
-
+    en_num = 0
+    for image in draw_digits.draw_rand_text(BG,ALPHA_GROUP):
+      show_data.show_image(show_data.shape_to_2d_image([image],0), "_e" + str(en_num) + ": " + hard_alphabet.num_to_chars(show_data.get_sample_value([image],0),ALPHA_GROUP))
+      en_num += 1 #enhancement number
 
 
 if not os.path.exists("../data/hardData"):
