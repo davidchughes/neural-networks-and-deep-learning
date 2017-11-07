@@ -10,12 +10,8 @@ accuracy and faster training than raw images.
 
 
 '''
-
-
-
-import show_data
+import os
 import numpy as np
-
 import time
 
 '''import draw_digits
@@ -26,11 +22,15 @@ for x in xrange(0,0):
     generated_data[en_num].append(sets[en_num])
     show_data.show_image(show_data.shape_to_2d_image(generated_data[en_num],x), "_e" + str(en_num) + ": " + str(show_data.get_sample_value(generated_data[en_num],x)))
 '''
+if not os.path.exists("../data/hardData"):
+    os.makedirs("../data/hardData")
+
 import generate_sample_data
 sample_set_names = generate_sample_data.generate_all_data("small", 5, 3)
 #sample_set_names = ["../data/hardData/small_bg5_a3_e0.pkl", "../data/hardData/small_bg5_a3_e1.pkl", "../data/hardData/small_bg5_a3_e2.pkl",  "../data/hardData/small_bg5_a3_e3.pkl", "../data/hardData/small_bg5_a3_e4.pkl"]
 
 import custom_loader
+import show_data
 import hard_alphabet
 
 for batch in range(0,len(sample_set_names)):
