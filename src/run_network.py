@@ -32,7 +32,7 @@ for x in xrange(0,10):
   sets = draw_digits.draw_rand_text(bg,alpha_group)
   for en_num in range(0,len(sets)):
     generated_data[en_num].append(sets[en_num])
-    show_data.show_image(show_data.shape_to_2d_image(generated_data[en_num],x), "_e" + str(en_num) + ": " + hard_alphabet.num_to_chars(show_data.get_sample_value(generated_data[en_num],x)),alpha_group)
+    show_data.show_image(show_data.shape_to_2d_image(generated_data[en_num],x), "_e" + str(en_num) + ": " + hard_alphabet.num_to_chars(show_data.get_sample_value(generated_data[en_num],x),alpha_group))
 '''
 
 if not os.path.exists("../data/hardData"):
