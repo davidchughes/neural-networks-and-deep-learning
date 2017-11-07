@@ -34,7 +34,7 @@ if SHOW_IMAGES:
   for x in xrange(0,3):
     en_num = 0
     for image in draw_digits.draw_rand_text(BG,ALPHA_GROUP):
-      show_data.show_image(show_data.shape_to_2d_image([image],0), "_e" + str(en_num) + ": " + hard_alphabet.num_to_chars(show_data.get_sample_value([image],0),ALPHA_GROUP))
+      show_data.show_image(show_data.shape_to_2d_image([image],0), "Example "+ str(x+1) +" _e" + str(en_num) + ": " + hard_alphabet.num_to_chars(show_data.get_sample_value([image],0),ALPHA_GROUP))
       en_num += 1 #enhancement number
 
 
@@ -66,7 +66,7 @@ for batch in sample_set_names:
   print "Loading " + batch 
   training_data, validation_data, test_data = custom_loader.load_data_wrapper(custom_loader.load_text_data(batch))
   if SHOW_IMAGES: # show the first element
-    show_data.show_image(show_data.shape_to_2d_image(training_data,0), hard_alphabet.num_to_chars(show_data.get_sample_value(training_data,0),ALPHA_GROUP))
+    show_data.show_image(show_data.shape_to_2d_image(training_data,0), batch + " Element 0 = " + hard_alphabet.num_to_chars(show_data.get_sample_value(training_data,0),ALPHA_GROUP))
 
   print 'running network for ' + batch
 

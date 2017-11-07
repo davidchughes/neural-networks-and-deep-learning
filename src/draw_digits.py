@@ -39,7 +39,7 @@ def draw_text(text, text_value, background = 0):  #text should be 3 chars 'garba
       scale_size = 140
     elif background == 4 :
       img = Image.open("../data/bg4.png")
-      scale_size = 100
+      scale_size = 135
     elif background == 5 :
       img = Image.open("../data/bg5.png")
       scale_size = 140
@@ -98,7 +98,7 @@ def draw_text(text, text_value, background = 0):  #text should be 3 chars 'garba
   #this crazy return type deserves to be objects or flattened or some how split apart in a reasonable way
   return ((arr, text_value), (arr_e1, text_value), (arr_e2, text_value), (arr_e3, text_value), (arr_e4, text_value))   #preserve conpatibility with mnist data setup
   
-def draw_rand_text(background = 3, char_set = 1):
+def draw_rand_text(background = 0, char_set = 0):
 
   pre = hard_alphabet.num_to_chars(random.randint(0,9),char_set)
   value = random.randint(0,9)
