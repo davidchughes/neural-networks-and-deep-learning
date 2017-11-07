@@ -19,7 +19,8 @@ def jitter(strength):
   return (random.random() - 0.5) * strength
 
 def draw_text(text, text_value, background = 0):  #text should be 3 chars 'garbage char'+'important char'+'garbage char', text val 0-9, bg 0-6
-
+  # As any bad function, this returns just a bit more than what you may have been expecting.
+  # Since I'm drawing an image and will want 4 other enhancemnets of that image, just go ahead and make them and return them as an array of all 5 in the same format as 1 data point of the the mnist data
   rotation = jitter(5)    # rotation 0deg +/- 2.5deg 
 
   font = ImageFont.truetype("/Library/Fonts/Andale Mono.ttf",250)  #Courier New.ttf",250)#Andale Mono.ttf",250) #Arial.ttf",250)  #change for PC
@@ -92,7 +93,7 @@ def draw_text(text, text_value, background = 0):  #text should be 3 chars 'garba
   img_e4 = ImageOps.invert(img_e4)  #Just one more - haha.  Seriously fix this insane repetition
   img_e4 = img_e4.convert('F')
   arr_e4 = np.array(img_e4)/255.0
-  arr_e4 = arr_e4.flatten()
+  arr_e4 = arr_e4.flatten() 
 
   #this crazy return type deserves to be objects or flattened or some how split apart in a reasonable way
   return ((arr, text_value), (arr_e1, text_value), (arr_e2, text_value), (arr_e3, text_value), (arr_e4, text_value))   #preserve conpatibility with mnist data setup
