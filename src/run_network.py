@@ -24,7 +24,8 @@ prefix = prefix.lower() # Heavy handedly make everything lowercase
 import hard_alphabet
 import show_data
 
-'''
+
+# Preview what the generated digits will look like
 import draw_digits
 generated_data = [[],[],[],[],[]]
 
@@ -33,7 +34,7 @@ for x in xrange(0,10):
   for en_num in range(0,len(sets)):
     generated_data[en_num].append(sets[en_num])
     show_data.show_image(show_data.shape_to_2d_image(generated_data[en_num],x), "_e" + str(en_num) + ": " + hard_alphabet.num_to_chars(show_data.get_sample_value(generated_data[en_num],x),alpha_group))
-'''
+
 
 if not os.path.exists("../data/hardData"):
     os.makedirs("../data/hardData")
