@@ -31,7 +31,7 @@ if SHOW_IMAGES:
   import draw_digits
   generated_data = [[],[],[],[],[]]
 
-  for x in xrange(0,10):
+  for x in xrange(0,3):
     sets = draw_digits.draw_rand_text(BG,ALPHA_GROUP)
     for en_num in range(0,len(sets)):
       generated_data[en_num].append(sets[en_num])

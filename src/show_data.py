@@ -1,6 +1,7 @@
 from matplotlib import pyplot
 import matplotlib as mpl
 import numpy as np
+import time
 
 def show_image(image,value = "?"):
   #Render a given numpy.float32 2D array of pixel data.
@@ -11,7 +12,12 @@ def show_image(image,value = "?"):
   imgplot.set_interpolation('nearest')
   ax.xaxis.set_ticks_position('top')
   ax.yaxis.set_ticks_position('left')
+  pyplot.ion()  # Make the plot non-blocking
   pyplot.show()
+  pyplot.pause(1.0) # Show it for 1 sec
+  pyplot.close()  # Close window will leave the window up until a new one opens or the main program exits - weird
+
+
 
 
 def shape_to_2d_image(samples,index):
